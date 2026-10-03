@@ -717,7 +717,7 @@ Premio 5</textarea>
     }
     if (!estado.premios.length) return;
     const total = estado.premios.length, fin = estado.actual >= total, n = bolsa().length;
-    $("pie").textContent = `${n} participantes en el sorteo` + (esEnlace() ? " · se actualiza desde la hoja" : "") + ".";
+    $("pie").textContent = `${n} participantes en el sorteo` + ".";
     $("etiPremio").textContent = fin ? "Rifa terminada" : `Premio ${estado.actual + 1} de ${total}`;
     $("premio").textContent = fin ? "¡Gracias por participar!" : estado.premios[estado.actual];
     const hay = estado.pendiente !== null, puede = !fin && !hay && !girando && (n > 0 || esEnlace());
