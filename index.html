@@ -269,6 +269,8 @@ Premio 5</textarea>
 (() => {
   const $ = id => document.getElementById(id);
   const CLAVE = "rifa-uptc-v3";
+  // hoja de asistencia del evento: viene puesta y se lee sola al abrir la página
+  const HOJA_FIJA = "https://docs.google.com/spreadsheets/d/1Vby4bIU5Devj0r38nOFki2j9Y1TnE3NLzDZ07jFir6E/edit?gid=452735354#gid=452735354";
   const reducir = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // datos leídos de la fuente (no se guardan: se vuelven a leer)
@@ -871,8 +873,9 @@ Premio 5</textarea>
   if (previo && previo.premios && previo.premios.length) {   // rifa en curso: se retoma
     estado = Object.assign(nuevoEstado(), previo); $("config").hidden = true;
   }
-  if (estado.fuente && estado.fuente.url) $("enlace").value = estado.fuente.url;
+  $("enlace").value = (estado.fuente && estado.fuente.url) || HOJA_FIJA;
   tamano(); pintar();
+  if (!$("config").hidden && $("enlace").value) leerEnlace();
 })();
 </script>
 </body>
